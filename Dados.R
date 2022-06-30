@@ -16,11 +16,17 @@ Dados <- readxl::read_excel(
     industrial_production =  tidyr::replace_na(industrial_production, mean(industrial_production, na.rm = TRUE)),
     retail_sales = tidyr::replace_na(retail_sales, mean(retail_sales, na.rm = TRUE)),
     usd_brl = tidyr::replace_na(usd_brl, mean(usd_brl, na.rm = TRUE))
-)
-
+  )
+  
+# 
+# `colnames<-`(Dados, c("Date", "Trucks","Ibc BR", "Retail Sales", "Business Confidence Index", "USD BRL", "Base Interest Rate",
+#                 "Industrial Production", "Business Credit Consessions", "Commodity Price Index", 
+#                   "Index Of Employed Persons Industry", "Uncertainty Index"))
 # Dados de Treino ---------------------------------------------------------
+
 inicio <- as.Date("2003-01-01")
 fim <- as.Date("2020-12-01")
+
 
 dados_treino <- Dados %>% 
   dplyr::filter(
@@ -34,14 +40,8 @@ Modelo_Linear <- lm(trucks ~ ibc_br, data = dados_treino)
 dados_teste <- Dados %>% 
   dplyr::filter(
     date > fim
-  ) 
-# DF contento dados de treino e as previsoes para 12 meses a frente -------
-# Dados_historicos_e_de_previsoes <- tibble::tibble(
-# Data = dados_treino$date,
-# Venda = dados_treino$trucks,
-# Classificacao = "Treino"
-# ) %>% 
-# rbind(
+  )
+
 previsao <- tibble::tibble(
   Data = dados_teste$date, 
   Venda = predict(Modelo_Linear, dados_teste), 

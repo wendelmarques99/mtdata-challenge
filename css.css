@@ -1,0 +1,24 @@
+
+/* Elementos com o ID "titulo" */
+h2{
+  font-family: inherit;
+  color: rgb(0,0,0);
+  line-height: 1.1;
+} 
+
+label{
+  font-family: inherit;
+}
+/*
+.well{
+    min-height: 20px;
+    padding: 19px;
+    margin-bottom: 20px;
+    background-color: white;
+    border: none;
+    border-radius: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    margin-top: 50px;
+}
+*/
