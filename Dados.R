@@ -36,24 +36,50 @@ dados_teste <- Dados %>%
     date > fim
   ) 
 # DF contento dados de treino e as previsoes para 12 meses a frente -------
-Dados_historicos_e_de_previsoes <- tibble::tibble(
-Data = dados_treino$date,
-Venda = dados_treino$trucks,
-Classificacao = "Treino"
-) %>% 
-rbind(
-tibble::tibble(
+# Dados_historicos_e_de_previsoes <- tibble::tibble(
+# Data = dados_treino$date,
+# Venda = dados_treino$trucks,
+# Classificacao = "Treino"
+# ) %>% 
+# rbind(
+previsao <- tibble::tibble(
   Data = dados_teste$date, 
   Venda = predict(Modelo_Linear, dados_teste), 
                   Classificacao = 'Previsão'
-))
-
-
+)
 
 p <- plotly::plot_ly()
 
-add_trace(p, line = list(
+p <- add_trace(p, line = list(
   color = "rgba(0,0,0,1)", 
   fillcolor = "rgba(0,0,0,1)"
-), x = Dados_historicos_e_de_previsoes$Data, y = Dados_historicos_e_de_previsoes$Venda, type = "scatter", mode = "lines")
+), hoveron = "points",
+x = dados_treino$date, 
+y = dados_treino$trucks, 
+type = "scatter",
+mode = "lines", 
+name = "Observado")
+
+
+p <- add_trace(p, line = list(
+  color = "rgba(0,0,255,1)", 
+  fillcolor = "rgba(0,0,255,1)"),
+  x = previsao$Data, 
+  y = previsao$Venda,
+  mode = "lines",
+  name = "Previsão",
+  type = "scatter"
+)
+
+
+layout(p,
+       margin = list(
+  b = 40, 
+  l = 60, 
+  r = 10, 
+  t = 25
+),
+title = "Previsão de Vendas - 12 Meses",
+xaxis = list("Período", c(0, 1)), 
+yaxis = list("Vendas"))
 
