@@ -43,7 +43,7 @@ dados_teste <- Dados %>%
   )
 
 previsao <- tibble::tibble(
-  Data = dados_teste$date, 
+  Data = as.Date(dados_teste$date), 
   Venda = predict(Modelo_Linear, dados_teste), 
                   Classificacao = 'Previsão'
 )

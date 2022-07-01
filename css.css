@@ -9,7 +9,7 @@ h2{
 label{
   font-family: inherit;
 }
-/*
+
 .well{
     min-height: 20px;
     padding: 19px;
@@ -21,4 +21,60 @@ label{
     box-shadow: none;
     margin-top: 50px;
 }
-*/
+
+/* Elemento de classe "botao" */
+
+#rodar {
+    font-size: 1.2em;
+    background: #4240ae;
+    color: white;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+ 
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+    
+}
+
+
+/* Elemento de classe "botao" com o estado da pseudoclasse "hover" */
+#rodar:hover {
+    background: white;
+    box-shadow: inset 2px 2px 2px rgba(0,0,0,0.2);
+    text-shadow: none;
+    color: #4240ae;
+}
+
+#rodar{
+    cursor: pointer;
+}
+
+label{
+  line-height: 1.6;
+  font-size: 20px;
+  font-family: inherit;
+  color: #222222;
+}
+
+.selectize-control.multi .selectize-input.has-items {
+    padding-left: 9px;
+    padding-right: 9px;
+    font-size: 20px;
+    font-family: inherit;
+}
+
+.selectize-input {
+    border: 1px solid #4240ae;
+    padding: 6px 12px;
+    display: inline-block;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
